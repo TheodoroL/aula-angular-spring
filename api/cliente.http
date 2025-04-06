@@ -1,0 +1,24 @@
+POST http://localhost:8080/client
+Content-Type: application/json
+
+{
+    "nome":"Teste",
+    "idade": 19,
+    "cidade": "Teste City"
+}
+
+###
+GET  http://localhost:8080/client
+
+###
+PUT  http://localhost:8080/client/2
+Content-Type: application/json
+
+{
+    "nome":"Lucas",
+    "idade": 20,
+    "cidade":"Campo Grande"
+}
+
+###
+DELETE  http://localhost:8080/client/4
