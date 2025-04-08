@@ -18,4 +18,9 @@ export class PrincipalComponent {
     this.service.selecionar()
       .subscribe(value => this.clientes = value);
   }
+
+  public ngOnInit(): void {
+    this.selecionar();
+  }
+
 }

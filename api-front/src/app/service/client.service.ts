@@ -7,7 +7,7 @@ import { Client } from '../model/Client';
   providedIn: 'root'
 })
 export class ClientService {
-  private urlApi: string = 'http://localhost:8080';
+  private urlApi: string = 'http://localhost:8080/client';
 
   constructor(private client: HttpClient) {
 
@@ -16,4 +16,5 @@ export class ClientService {
   public selecionar(): Observable<Client[]> {
     return this.client.get<Client[]>(this.urlApi);
   }
+
 }
