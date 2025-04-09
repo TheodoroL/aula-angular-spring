@@ -7,6 +7,12 @@ import { ClientService } from '../service/client.service';
   styleUrls: ['./principal.component.css']
 })
 export class PrincipalComponent {
+  public client: Client = {
+    id: 0,
+    nome: '',
+    idade: 0,
+    cidade: ''
+  };
 
   public btnCadestro: boolean = true;
 
