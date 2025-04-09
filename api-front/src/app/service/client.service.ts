@@ -16,5 +16,8 @@ export class ClientService {
   public selecionar(): Observable<Client[]> {
     return this.client.get<Client[]>(this.urlApi);
   }
-
+  //adicionando o cadastrar
+  public cadastrar(obj: Client): Observable<Client> {
+    return this.client.post<Client>(this.urlApi, obj);
+  }
 }
