@@ -18,6 +18,7 @@ export class ClientService {
   }
   //adicionando o cadastrar
   public cadastrar(obj: Client): Observable<Client> {
-    return this.client.post<Client>(this.urlApi, obj);
+    const { id, ...client } = obj;
+    return this.client.post<Client>(this.urlApi, client);
   }
 }
