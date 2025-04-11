@@ -7,15 +7,11 @@
     <input type="button" value="Cadastrar" *ngIf="btnCadestro" class="btn btn-primary" (click)="cadastrar()">
     <input type="button" value="Alterar" *ngIf="!btnCadestro" class="btn btn-warning">
     <input type="button" value="Remover" *ngIf="!btnCadestro" class="btn btn-danger">
-    <input type="button" value="Cancelar" *ngIf="!btnCadestro" class="btn btn-secondary">
+    <input type="button" value="Cancelar" *ngIf="!btnCadestro" class="btn btn-secondary" (click)="cancelarSelecao()">
 
 </form>
 
-<h1>
-
-    {{client | json}}
-</h1>
-<table class="table">
+<table class="table" *ngIf="tabela">
     <thead>
         <tr>
             <th>#</th>
@@ -31,7 +27,7 @@
             <td>{{c.nome}}</td>
             <td>{{c.idade}}</td>
             <td>{{c.cidade}}</td>
-            <td><button class="btn btn-success">Selecionar</button></td>
+            <td><button class="btn btn-success" (click)="selecionarClient(i)">Selecionar</button></td>
         </tr>
     </tbody>
 </table>

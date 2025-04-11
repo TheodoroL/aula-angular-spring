@@ -7,16 +7,12 @@ import { ClientService } from '../service/client.service';
   styleUrls: ['./principal.component.css']
 })
 export class PrincipalComponent {
-  public client: Client = {
-    id: 0,
-    nome: '',
-    idade: 0,
-    cidade: ''
-  };
+  public client: Client = new Client();
 
   public btnCadestro: boolean = true;
 
   public clientes: Client[] = [];
+  public tabela: boolean = true;
 
   constructor(private service: ClientService) { }
 
@@ -28,17 +24,26 @@ export class PrincipalComponent {
     this.service.cadastrar(this.client)
       .subscribe(retorno => {
         this.clientes.push(retorno);
-        this.client = {
-          id: 0,
-          nome: '',
-          idade: 0,
-          cidade: ''
-        };
+        this.client = new Client();
         alert("Cliente Cadastrado com sucesso");
       });
   }
+  //função para selecionar o cliente
+  public selecionarClient(pos: number): void {
+    //pega os dados que foi selecionado o cliente
+    this.client = this.clientes[pos];
+    //o botão de cadastro é desativado
+    this.btnCadestro = false;
+    //a tabela some
+    this.tabela = false;
+  }
+  public cancelarSelecao(): void {
+    this.client = new Client();
+    this.btnCadestro = true;
+    this.tabela = true;
 
 
+  }
 
   public ngOnInit(): void {
     this.selecionar();
