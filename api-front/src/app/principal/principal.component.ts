@@ -53,6 +53,19 @@ export class PrincipalComponent {
 
   }
 
+  public remover(): void {
+    this.service.remover(this.client.id).subscribe(() => {
+      const pos = this.clientes.findIndex(obj => {
+        return obj.id == this.client.id;
+      });
+
+      this.clientes.splice(pos, 1);
+      this.client = new Client();
+      this.messagemAlert("Cliente Removido com sucesso!");
+      this.tabelaEBtnIsTrue();
+    });
+  }
+
   public ngOnInit(): void {
     this.selecionar();
   }
