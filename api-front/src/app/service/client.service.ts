@@ -26,4 +26,8 @@ export class ClientService {
     const { id, ...client } = obj;
     return this.client.put<Client>(`${this.urlApi}/${id}`, client);
   }
+
+  public remover(id: number): Observable<void> {
+    return this.client.delete<void>(`${this.urlApi}/${id}`);
+  }
 }

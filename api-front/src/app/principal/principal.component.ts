@@ -49,9 +49,7 @@ export class PrincipalComponent {
   }
   public cancelarSelecao(): void {
     this.client = new Client();
-    this.btnCadestro = true;
-    this.tabela = true;
-
+    this.tabelaEBtnIsTrue();
 
   }
 
