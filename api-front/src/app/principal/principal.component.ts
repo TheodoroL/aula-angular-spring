@@ -25,17 +25,27 @@ export class PrincipalComponent {
       .subscribe(retorno => {
         this.clientes.push(retorno);
         this.client = new Client();
-        alert("Cliente Cadastrado com sucesso");
+        this.messagemAlert("Cliente Cadastrado com sucesso!");
+
       });
   }
+
+  public editar(): void {
+    this.service.editar(this.client)
+      .subscribe(retorno => {
+        const pos = this.clientes.findIndex(obj => obj.id == retorno.id);
+        this.clientes[pos] = retorno;
+        this.client = new Client();
+        this.tabelaEBtnIsTrue();
+        this.messagemAlert("Cliente alterado com sucesso!");
+      });
+  }
+
   //função para selecionar o cliente
   public selecionarClient(pos: number): void {
     //pega os dados que foi selecionado o cliente
     this.client = this.clientes[pos];
-    //o botão de cadastro é desativado
-    this.btnCadestro = false;
-    //a tabela some
-    this.tabela = false;
+    this.tabelaEBtnIsFalse();
   }
   public cancelarSelecao(): void {
     this.client = new Client();
@@ -49,4 +59,18 @@ export class PrincipalComponent {
     this.selecionar();
   }
 
+  private tabelaEBtnIsTrue(): void {
+    this.btnCadestro = true;
+    this.tabela = true;
+
+  }
+  private tabelaEBtnIsFalse(): void {
+    this.btnCadestro = false;
+    this.tabela = false;
+
+  }
+  private messagemAlert(mensagem: string): void {
+    alert(mensagem);
+
+  }
 }

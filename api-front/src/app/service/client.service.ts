@@ -21,4 +21,9 @@ export class ClientService {
     const { id, ...client } = obj;
     return this.client.post<Client>(this.urlApi, client);
   }
+  //editar o cliente
+  public editar(obj: Client): Observable<Client> {
+    const { id, ...client } = obj;
+    return this.client.put<Client>(`${this.urlApi}/${id}`, client);
+  }
 }
